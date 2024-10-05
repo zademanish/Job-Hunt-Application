@@ -36,6 +36,7 @@ const appRouter = createBrowserRouter([
 ])
   return (
     <>
+    {/* app router */}
    <RouterProvider router={appRouter}/>
     </>
   )
