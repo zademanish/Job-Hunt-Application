@@ -10,6 +10,7 @@ import store from "@/redux/store";
 
 const Navbar = () => {
   const {user} = useSelector(store=>store.auth)
+  console.log(user)
   return (
     <div className="bg-white">
       <div className="flex justify-between items-center mx-auto max-w-7xl h-16 ">
@@ -54,7 +55,7 @@ const Navbar = () => {
                     />
                   </Avatar>
                   <div>
-                    <h1>Manish Zade</h1>
+                    <h1>{user.fullName}</h1>
                     <p className="text-sm text-gray-500">
                       Lorem ipsum dolor sit amet.
                     </p>
