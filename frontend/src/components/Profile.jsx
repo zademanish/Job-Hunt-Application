@@ -15,22 +15,24 @@ import {
 import { Input } from "./ui/input";
 import AppliedJobTable from "./AppliedJobTable";
 import UpdateProfileDialog from "./UpdateProfileDialog";
+import useGetAppliedJobs from "@/hooks/useGetAppliedJobs";
+import Footer from "./Footer";
 
-const skills = ["Html", "css", "JavaScript", "react"];
 
 const Profile = () => {
+  useGetAppliedJobs();
   const { user } = useSelector((store) => store.auth);
   const [open, setOpen] = useState(false);
   const isResume = true;
   return (
-    <div>
+    <div className="bg-purple-900 h-fit">
       <Navbar />
-      <div className="max-w-4xl mx-auto bg-white border border-gray-200 rounded-2xl my-5 p-8">
+      <div className="max-w-4xl md:mx-auto mx-4  bg-purple-200  rounded-2xl my-8 p-8">
         <div className="flex justify-between">
           <div className="flex items-center gap-4">
             <Avatar className="h-24 w-24">
               <AvatarImage
-                src="https://img.freepik.com/premium-vector/abstract-heart-gradient-logo_269830-1167.jpg?w=1060"
+                src={user?.profile?.profilePhoto}
                 alt="profile"
               />
             </Avatar>
@@ -43,8 +45,8 @@ const Profile = () => {
           </div>
           <Button
             onClick={() => setOpen(true)}
-            className="text-right"
-            variant="outline"
+            className="text-right bg-black hover:bg-gray-700 text-white"
+           
           >
             <Pen />
           </Button>
@@ -84,11 +86,12 @@ const Profile = () => {
           )}
         </div>
       </div>
-      <div className="max-w-4xl mx-auto bg-white rounded-2xl">
-        <h1 className="font-bold text-lg my-5">Applied Job</h1>
+      <div className="max-w-4xl mx-4 md:mx-auto bg-purple-200 my-8  rounded-sm">
+        <h1 className="text-center font-bold text-lg pt-6  ">Applied Job</h1>
         <AppliedJobTable />
       </div>
       <UpdateProfileDialog open={open} setOpen={setOpen} />
+      <Footer/>
     </div>
   );
 };

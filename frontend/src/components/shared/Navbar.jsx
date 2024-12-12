@@ -3,79 +3,252 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Popover, PopoverContent } from "../ui/popover";
 import { Button } from "../ui/button";
 import { PopoverTrigger } from "@radix-ui/react-popover";
-import { LogOut, User2 } from "lucide-react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import store from "@/redux/store";
+import { LogOut, Menu, User2 } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "sonner";
+import axios from "axios";
+import { USER_API_END_POINT } from "@/utils/Constant";
+import { setUser } from "@/redux/authSlice";
+import logo from "../../assets/logo.webp";
 
 const Navbar = () => {
-  const {user} = useSelector(store=>store.auth)
-  console.log(user)
+  const { user } = useSelector((store) => store.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const logoutHanderler = async () => {
+    try {
+      const res = await axios.get(`${USER_API_END_POINT}/logout`, {
+        withCredentials: true,
+      });
+      if (res.data.success) {
+        dispatch(setUser(null));
+        navigate("/");
+        toast.success(res.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
+  };
   return (
-    <div className="bg-white">
-      <div className="flex justify-between items-center mx-auto max-w-7xl h-16 ">
+    <div className=" text-white px-4">
+      <div className="flex justify-between items-center mx-auto md:max-w-7xl h-16 ">
         <div>
-          <h1 className="text-2xl font-bold">
-            Job<span className="text-[#F83002]">Portal</span>
-          </h1>
+          <Link to="/" className="text-2xl font-bold flex items-center">
+            <div className="w-[4.5rem]">
+              <img className="object-cover" src={logo} alt="logo" />
+            </div>
+            JOB<span className="text-[#F83002]">HUNT</span>
+          </Link>
         </div>
         <div className="flex items-center gap-12">
-          <ul className="flex items-center font-medium gap-5">
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/jobs'>Jobs</Link></li>
-            <li><Link to='/browse'>Browse</Link></li>
-           
+          <ul className="hidden md:flex items-center font-medium gap-5">
+            {user && user.role == "requiter" ? (
+              <>
+                <li>
+                  <Link to="/admin/companies">Companies</Link>
+                </li>
+                <li>
+                  <Link to="/admin/jobs">Jobs</Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/jobs">Jobs</Link>
+                </li>
+                <li>
+                  <Link to="/browse">Browse</Link>
+                </li>
+              </>
+            )}
           </ul>
-          {
-            !user ? (
-              <div className="flex items-center gap-2">
-                <Link to='/login'>
-                <Button variant="outline">Login</Button>
-                </Link>
-                <Link to="/signup">
-                <Button className="bg-[#920aa7] hover:bg-[#df2dfa]">Signup</Button>
-                </Link>
-              </div>
-            ) :(
+          {!user ? (
+            <div>
               <Popover>
-              <PopoverTrigger asChild>
-                <Avatar className="cursor-pointer">
-                  <AvatarImage
-                    src="https://github.com/shadcn.png"
-                    alt="@shadcn"
-                  />
-                </Avatar>
-              </PopoverTrigger>
-              <PopoverContent className="w-80">
-                <div className="flex gap-4">
-                  <Avatar className="cursor-pointer">
+                <PopoverTrigger asChild>
+                  <Menu className=" md:hidden h-8 w-8" />
+                </PopoverTrigger>
+                <PopoverContent className="w-52 text-center pb-6 h-fit">
+                  <ul className="md:flex items-center font-medium gap-5">
+                    <li className="my-3 text-2xl">
+                      <Link to="/">Home</Link>
+                    </li>
+                    <li className="my-3 text-2xl">
+                      <Link to="/jobs">Jobs</Link>
+                    </li>
+                    <li className="my-3 text-2xl">
+                      <Link to="/browse">Browse</Link>
+                    </li>
+                    <div className="my-5">
+                      <Link to="/login">
+                        <Button
+                          variant="outline"
+                          className="text-black px-6 text-2xl bg-white hover:bg-slate-300"
+                        >
+                          Login
+                        </Button>
+                      </Link>
+                    </div>
+                    <div className="my-5">
+                      <Link to="/signup">
+                        <Button className="bg-red-500 hover:bg-red-800 text-2xl px-6">
+                          Signup
+                        </Button>
+                      </Link>
+                    </div>
+                  </ul>
+                </PopoverContent>
+              </Popover>
+              <div className="hidden md:block md:flex gap-2">
+                <Link to="/login">
+                  <Button
+                    variant="outline"
+                    className="text-black px-6  bg-white hover:bg-slate-300"
+                  >
+                    Login
+                  </Button>
+                </Link>
+             
+                <Link to="/signup">
+                  <Button className="bg-red-500 hover:bg-red-800  px-6">
+                    Signup
+                  </Button>
+                </Link>
+            
+              </div>
+            </div>
+          ) : (
+            <div className="flex gap-3 items-center">
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Avatar className="hidden md:block cursor-pointer ">
                     <AvatarImage
-                      src="https://github.com/shadcn.png"
+                      src={user?.profile?.profilePhoto}
                       alt="@shadcn"
                     />
                   </Avatar>
-                  <div>
-                    <h1>{user.fullName}</h1>
-                    <p className="text-sm text-gray-500">
-                      Lorem ipsum dolor sit amet.
-                    </p>
+                </PopoverTrigger>
+                <PopoverContent className="w-80">
+                  <div className="flex gap-4">
+                    <Avatar className="cursor-pointer">
+                      <AvatarImage
+                        src={user?.profile?.profilePhoto}
+                        alt="@shadcn"
+                      />
+                    </Avatar>
+                    <div>
+                      <h1>{user.fullName}</h1>
+                      <p className="text-sm text-gray-500">
+                        {user?.profile?.bio}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex flex-col text-gray-600 my-2">
-                  <div className="flex items-center gap-1">
-                    <User2 />
-                    <Button variant="link"><Link to="/profile">view profile</Link></Button>
+                  <div className="flex flex-col text-gray-600 my-2">
+                    {user && user.role === "student" && (
+                      <div className="flex items-center gap-1">
+                        <User2 />
+                        <Button variant="link">
+                          <Link to="/profile">view profile</Link>
+                        </Button>
+                      </div>
+                    )}
+                    <div className="flex items-center gap-1">
+                      <LogOut />
+                      <Button variant="link" onClick={logoutHanderler}>
+                        Logout
+                      </Button>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <LogOut/>
-                    <Button variant="link">Logout</Button>
-                  </div>
-                </div>
-              </PopoverContent>
-            </Popover>
-            ) 
-          }
-         
+                </PopoverContent>
+              </Popover>
+              {/* testing */}
+
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Menu className=" md:hidden h-8 w-8" />
+                </PopoverTrigger>
+                <PopoverContent className="w-52 text-center pb-6 h-fit">
+                  <ul className="md:flex items-center font-medium gap-5">
+                    {user && user.role == "requiter" ? (
+                      <>
+                        <li className="my-3 text-2xl">
+                          <Link to="/admin/companies">Companies</Link>
+                        </li>
+                        <li className="my-3 text-2xl">
+                          <Link to="/admin/jobs">Jobs</Link>
+                        </li>
+                      </>
+                    ) : (
+                      <>
+                        <li className="my-3 text-2xl">
+                          <Link to="/">Home</Link>
+                        </li>
+                        <li className="my-3 text-2xl">
+                          <Link to="/jobs">Jobs</Link>
+                        </li>
+                        <li className="my-3 text-2xl">
+                          <Link to="/browse">Browse</Link>
+                        </li>
+                        <div className="flex justify-center items-center my-3">
+                          <Popover>
+                            <PopoverTrigger asChild>
+                              <Avatar className="cursor-pointer w-20 h-20">
+                                <AvatarImage
+                                  src={user?.profile?.profilePhoto}
+                                  alt="@shadcn"
+                                />
+                              </Avatar>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-80">
+                              <div className="flex gap-4">
+                                <Avatar className="cursor-pointer">
+                                  <AvatarImage
+                                    src={user?.profile?.profilePhoto}
+                                    alt="@shadcn"
+                                  />
+                                </Avatar>
+                                <div>
+                                  <h1>{user.fullName}</h1>
+                                  <p className="text-sm text-gray-500">
+                                    {user?.profile?.bio}
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="flex flex-col text-gray-600 my-2">
+                                {user && user.role === "student" && (
+                                  <div className="flex items-center gap-1">
+                                    <User2 />
+                                    <Button variant="link">
+                                      <Link to="/profile">view profile</Link>
+                                    </Button>
+                                  </div>
+                                )}
+                                <div className="flex items-center gap-1">
+                                  <LogOut />
+                                  <Button
+                                    variant="link"
+                                    onClick={logoutHanderler}
+                                  >
+                                    Logout
+                                  </Button>
+                                </div>
+                              </div>
+                            </PopoverContent>
+                          </Popover>
+                        </div>
+                      </>
+                    )}
+                  </ul>
+                </PopoverContent>
+              </Popover>
+            </div>
+          )}
         </div>
       </div>
     </div>

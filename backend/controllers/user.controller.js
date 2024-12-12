@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import cookie from "cookie-parser";
 import getDataUri from "../utils/DataUri.js";
 import cloudinary from "../utils/Cloudinary.js";
+
 export const Register = async (req, res) => {
   try {
     const { fullName, email, phoneNumber, password, role } = req.body;
@@ -13,6 +14,10 @@ export const Register = async (req, res) => {
         success: false,
       });
     }
+    const file = req.file;
+    const fileUri = getDataUri(file);
+    const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+
     const user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({
@@ -27,6 +32,9 @@ export const Register = async (req, res) => {
       phoneNumber,
       password: hashedPassword,
       role,
+      profile:{
+        profilePhoto:cloudResponse.secure_url,
+      },
     });
     return res.status(200).json({
       message: "Register successfully",

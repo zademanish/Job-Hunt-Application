@@ -7,4 +7,4 @@ const getDataUri = (file)=>{
     return parser.format(extName,file.buffer);
 }
 
-export default getDataUri
+export default getDataUri;
