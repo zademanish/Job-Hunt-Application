@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOption= {
-    origin:'https://job-hunt-five-delta.vercel.app/',
+    origin:'http://localhost:5173',
     credentials:true
 }
 app.use(cors(corsOption));
