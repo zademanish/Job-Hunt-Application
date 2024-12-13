@@ -114,13 +114,12 @@ const Navbar = () => {
                     Login
                   </Button>
                 </Link>
-             
+
                 <Link to="/signup">
                   <Button className="bg-red-500 hover:bg-red-800  px-6">
                     Signup
                   </Button>
                 </Link>
-            
               </div>
             </div>
           ) : (
@@ -134,7 +133,7 @@ const Navbar = () => {
                     />
                   </Avatar>
                 </PopoverTrigger>
-                <PopoverContent className="w-80">
+                <PopoverContent className="w-80 bg-purple-200">
                   <div className="flex gap-4">
                     <Avatar className="cursor-pointer">
                       <AvatarImage
@@ -173,7 +172,7 @@ const Navbar = () => {
                 <PopoverTrigger asChild>
                   <Menu className=" md:hidden h-8 w-8" />
                 </PopoverTrigger>
-                <PopoverContent className="w-52 text-center pb-6 h-fit">
+                <PopoverContent className="w-52 text-center bg-purple-200 pb-6 h-fit">
                   <ul className="md:flex items-center font-medium gap-5">
                     {user && user.role == "requiter" ? (
                       <>
@@ -183,6 +182,20 @@ const Navbar = () => {
                         <li className="my-3 text-2xl">
                           <Link to="/admin/jobs">Jobs</Link>
                         </li>
+                        <div className="flex justify-center items-center my-3">
+                          <Avatar className="cursor-pointer w-20 h-20">
+                            <AvatarImage
+                              src={user?.profile?.profilePhoto}
+                              alt="@shadcn"
+                            />
+                          </Avatar>
+                        </div>
+                        <div className="flex justify-center text-2xl items-center ">
+                            <LogOut />
+                            <Button variant="link" className="text-2xl mt-2" onClick={logoutHanderler}>
+                              Logout
+                            </Button>
+                          </div>
                       </>
                     ) : (
                       <>
@@ -195,53 +208,20 @@ const Navbar = () => {
                         <li className="my-3 text-2xl">
                           <Link to="/browse">Browse</Link>
                         </li>
-                        <div className="flex justify-center items-center my-3">
-                          <Popover>
-                            <PopoverTrigger asChild>
-                              <Avatar className="cursor-pointer w-20 h-20">
-                                <AvatarImage
-                                  src={user?.profile?.profilePhoto}
-                                  alt="@shadcn"
-                                />
-                              </Avatar>
-                            </PopoverTrigger>
-                            <PopoverContent className="w-80">
-                              <div className="flex gap-4">
-                                <Avatar className="cursor-pointer">
-                                  <AvatarImage
-                                    src={user?.profile?.profilePhoto}
-                                    alt="@shadcn"
-                                  />
-                                </Avatar>
-                                <div>
-                                  <h1>{user.fullName}</h1>
-                                  <p className="text-sm text-gray-500">
-                                    {user?.profile?.bio}
-                                  </p>
-                                </div>
-                              </div>
-                              <div className="flex flex-col text-gray-600 my-2">
-                                {user && user.role === "student" && (
-                                  <div className="flex items-center gap-1">
-                                    <User2 />
-                                    <Button variant="link">
-                                      <Link to="/profile">view profile</Link>
-                                    </Button>
-                                  </div>
-                                )}
-                                <div className="flex items-center gap-1">
-                                  <LogOut />
-                                  <Button
-                                    variant="link"
-                                    onClick={logoutHanderler}
-                                  >
-                                    Logout
-                                  </Button>
-                                </div>
-                              </div>
-                            </PopoverContent>
-                          </Popover>
-                        </div>
+                        <Link to='/profile' className="flex justify-center items-center my-3">
+                          <Avatar className="cursor-pointer w-20 h-20">
+                            <AvatarImage
+                              src={user?.profile?.profilePhoto}
+                              alt="@shadcn"
+                            />
+                          </Avatar>
+                        </Link>
+                        <div className="flex justify-center text-2xl items-center ">
+                            <LogOut />
+                            <Button variant="link" className="text-2xl mt-2" onClick={logoutHanderler}>
+                              Logout
+                            </Button>
+                          </div>
                       </>
                     )}
                   </ul>

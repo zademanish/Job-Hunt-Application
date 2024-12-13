@@ -16,7 +16,7 @@ const Jobs = () => {
         return job.title.toLowerCase().includes(searchedQuery.toLowerCase()) ||
         job.description.toLowerCase().includes(searchedQuery.toLowerCase()) ||
         job.location.toLowerCase().includes(searchedQuery.toLowerCase()) 
-        // job.salary.toLowerCase().includes(searchedQuery.toLowerCase())
+        
       })
       setFilterJobs(filteredJobs);
     }else{
@@ -24,18 +24,18 @@ const Jobs = () => {
     }
   },[allJobs,searchedQuery])
   return (
-    <div>
+    <div className="bg-purple-900 ">
       <Navbar />
-      <div className="max-w-7xl mx-auto my-5">
-        <div className="flex gap-5">
-          <div className="w-20%">
-            <FilterCard />
+      <div className="max-w-7xl mx-auto my-5 px-4">
+        <div className=" md:flex gap-5">
+          <div className="my-5 md:my-0 md:block w-20%">
+            <FilterCard  />
           </div>
           {filterJobs.length < 0 ? (
             <span>Job not found</span>
           ) : (
-            <div className="flex-1 h-[88vh] overflow-y-auto pb-5">
-              <div className="grid grid-cols-3 gap-4">
+            <div className="flex-1 h-[84vh] overflow-y-auto  pb-5">
+              <div className="grid grid-cols-1 md:grid-cols-3  gap-4">
                 {
                       filterJobs.map((job) => 
                         <motion.div

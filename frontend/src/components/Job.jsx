@@ -34,7 +34,9 @@ const Job = ({job}) => {
       </div>
       <div>
         <h1 className="font-medium text-xl my-2">{job?.title}</h1>
+        <div className="h-10 overflow-hidden">
         <p className="text-sm text-black">{job?.description}</p>
+        </div>
       </div>
       <div className="flex items-center my-2 gap-4">
         <Badge className="text-blue-700 font-bold" variant="ghost">{job?.position} position</Badge>
