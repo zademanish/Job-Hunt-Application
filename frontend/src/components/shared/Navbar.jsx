@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 import axios from "axios";
+import { USER_API_END_POINT } from "@/utils/Constant";
 import { setUser } from "@/redux/authSlice";
 import logo from "../../assets/logo.webp";
 
@@ -18,7 +19,7 @@ const Navbar = () => {
 
   const logoutHanderler = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_USER_API_END_POINT}/logout`, {
+      const res = await axios.get(`${USER_API_END_POINT}/logout`, {
         withCredentials: true,
       });
       if (res.data.success) {

@@ -8,7 +8,6 @@ import useGetAllJobs from '@/hooks/useGetAllJobs'
 import { useSelector } from 'react-redux'
 import store from '@/redux/store'
 import { useNavigate } from 'react-router-dom'
-import bg1 from "../assets/bg2.jpg"
 const Home = () => {
   useGetAllJobs();
   const {user} = useSelector(store=>store.auth);

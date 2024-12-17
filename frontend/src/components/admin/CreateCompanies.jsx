@@ -4,6 +4,7 @@ import { Label } from '../ui/label'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import { useNavigate } from 'react-router-dom'
+import { COMPANY_API_END_POINT } from '@/utils/Constant'
 import { toast } from 'sonner'
 import { useDispatch } from 'react-redux'
 import { SetSingleCompany } from '@/redux/companySlice'
@@ -15,7 +16,7 @@ const CreateCompanies = () => {
     const [companyName, setCompanyName]=useState();
     const registerNewCompany = async()=>{
         try{
-            const res = await axios.post(`${process.meta.env.VITE_COMPANY_API_END_POINT}/register`,{companyName},{
+            const res = await axios.post(`${COMPANY_API_END_POINT}/register`,{companyName},{
                 headers:{
                     "Content-Type":'application/json'
                 },
