@@ -17,6 +17,7 @@ const Home = () => {
     // if(user.role ==='requiter'){
     //   navigate('/admin/companies');
     // }
+    
     if(user?.role === null){
       navigate('/');
     }
