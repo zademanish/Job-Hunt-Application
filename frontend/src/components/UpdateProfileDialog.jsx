@@ -57,7 +57,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
           setLoading(false);
         }
         setOpen(false);
-        console.log(input)     
+         
     }
     const fileChangeHandler =(e)=>{
         const file = e.target.files?.[0];

@@ -1,5 +1,3 @@
-# nodemodule
-frontend/.env
-backend/.env
-frontend/nodemodule/
-backend/nodemodule/
+
+.env
+node_modules
