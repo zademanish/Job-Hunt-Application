@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import store from "@/redux/store";
 import { toast } from "sonner";
 import Navbar from "./shared/Navbar";
+import { APPLICATION_API_END_POINT, JOB_API_END_POINT } from "@/utils/Constant";
 
 const JobDescription = () => {
   const { singleJob } = useSelector((store) => store.job);
@@ -24,7 +25,7 @@ const JobDescription = () => {
   const applyHandler = async () => {
     try {
       const res = await axios.get(
-        `${VITE_APPLICATION_API_END_POINT}/apply/${jobId}`,
+        `${APPLICATION_API_END_POINT}/apply/${jobId}`,
         { withCredentials: true }
       );
       if (res.data.success) {
@@ -44,7 +45,7 @@ const JobDescription = () => {
   useEffect(() => {
     const fetchSingleJob = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_JOB_API_END_POINT}/get/${jobId}`, {
+        const res = await axios.get(`${JOB_API_END_POINT}/get/${jobId}`, {
           withCredentials: true,
         });
         if (res.data.success) {

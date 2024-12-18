@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setAllApplicants } from '@/redux/applicationSlice'
 import store from '@/redux/store'
+import { APPLICATION_API_END_POINT } from '@/utils/Constant'
 
 const Applicants = () => {
     const params = useParams();
@@ -14,7 +15,7 @@ const Applicants = () => {
     useEffect(()=>{
         const fetchAllApplicants = async()=>{
             try{
-                const res = await axios.get(`${VITE_APPLICATION_API_END_POINT}/${params.id}/applicants`,{withCredentials:true});
+                const res = await axios.get(`${APPLICATION_API_END_POINT}/${params.id}/applicants`,{withCredentials:true});
                 if(res.data.success){
                     dispatch(setAllApplicants(res.data.job))
                 }

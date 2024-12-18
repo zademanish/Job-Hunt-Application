@@ -34,13 +34,13 @@ const CreateCompanies = () => {
         }
     }
     return (
-        <div>
+        <div className='bg-purple-900 min-h-screen'>
             <Navbar />
             <div
-                className='max-w-4xl mx-auto'>
+                className='max-w-4xl mx-4 md:mx-auto'>
                 <div className='my-10'>
                     <h1 className='font-bold text-2xl'>Your Company Name</h1>
-                    <p className='text-gray-500'>what would you like your company name ? you can change this later.</p>
+                    <p className='text-white'>what would you like your company name ? you can change this later.</p>
                 </div>
                 <Label>Company Name</Label>
                 <Input type="text" className="my-2" onChange={(e)=>setCompanyName(e.target.value)} placeholder="JobHunt, Microsoft etc." />

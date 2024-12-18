@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOption= {
-    origin:process.env.FRONT_END_URL,
+    origin:'https://job-hunt-application.onrender.com',
     credentials:true
 }
 app.use(cors(corsOption));

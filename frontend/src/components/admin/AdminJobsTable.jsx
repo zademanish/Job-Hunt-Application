@@ -29,14 +29,14 @@ const AdminJobsTable = () => {
     setFilterJobs(filteredJobs);
   },[allAdminJobs,searchJobsByText])
   return (
-    <Table>
+    <Table className="text-white">
       <TableCaption>A List of your recent Posted Jobs</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead>Company Name</TableHead>
-          <TableHead>Role</TableHead>
-          <TableHead>Date</TableHead>
-          <TableHead className="text-right">Action</TableHead>
+          <TableHead className="font-bold text-white">Company Name</TableHead>
+          <TableHead  className="font-bold text-white">Role</TableHead>
+          <TableHead  className="font-bold text-white">Date</TableHead>
+          <TableHead className="text-right font-bold text-white">Action</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

@@ -36,10 +36,10 @@ const CompaniesTable = () => {
       <TableCaption>A List of your recent register companies</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead>Logo</TableHead>
-          <TableHead>Name</TableHead>
-          <TableHead>Date</TableHead>
-          <TableHead className="text-right">Action</TableHead>
+          <TableHead  className="font-bold text-white">Logo</TableHead>
+          <TableHead  className="font-bold text-white">Name</TableHead>
+          <TableHead  className="font-bold text-white">Date</TableHead>
+          <TableHead className="text-right text-white font-bold">Action</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

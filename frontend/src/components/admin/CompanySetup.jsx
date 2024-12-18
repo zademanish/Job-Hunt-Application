@@ -75,15 +75,15 @@ const CompanySetup = () => {
     })
   },[singleCompany]);
   return (
-    <div>
+    <div className="bg-purple-900 min-h-screen">
       <Navbar />
-      <div className="max-w-xl mx-auto my-10">
+      <div className="max-w-xl mx-4 md:mx-auto my-10">
         <form onSubmit={submitHandler}>
           <div className="flex items-center gap-5 py-6">
             <Button
               onClick ={()=>navigate('/admin/companies')}
               variant="outline"
-              className="flex items-center gap- text-gray-500 font-semibold "
+              className="flex items-center bg-purple-300  text-gray-500 font-semibold "
             >
               <ArrowLeft />
               <span>Back</span>

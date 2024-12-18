@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import axios from "axios";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { JOB_API_END_POINT } from "@/utils/Constant";
 
 
 const PostJob = () => {
@@ -41,7 +42,7 @@ const PostJob = () => {
         e.preventDefault();
         try{
             setLoading(true);
-            const res = await axios.post(`${import.meta.env.VITE_JOB_API_END_POINT}/post`,input,{
+            const res = await axios.post(`${JOB_API_END_POINT}/post`,input,{
                 headers:{
                     'Content-Type':'application/json'
                 },
@@ -60,10 +61,10 @@ const PostJob = () => {
 
     }
   return (
-    <div>
+    <div className="bg-purple-900 h-screen">
       <Navbar />
-      <div className="flex items-center justify-center w-screen my-5">
-        <form onSubmit={submitHandler} className="p-8 max-w-4xl border border-gray-200 rounded-md shadow-lg">
+      <div className="flex items-center justify-center w-screen my-5 ">
+        <form onSubmit={submitHandler} className="p-8 max-w-4xl border border-gray-200 mx-4 rounded-md shadow-lg">
           <div className="grid grid-cols-2 gap-5">
             <div>
               <Label>Title</Label>

@@ -17,9 +17,9 @@ const AdminJobs = () => {
     dispatch(setSearchJobsByText(input));
   }, [input]);
   return (
-    <>
+    <div className="bg-purple-900 h-screen">
       <Navbar />
-      <div className="max-w-6xl mx-auto my-10">
+      <div className="max-w-6xl md:mx-auto my-10 mx-4">
         <div className="flex justify-between items-center">
           <Input
             className="w-fit"
@@ -34,7 +34,7 @@ const AdminJobs = () => {
           <AdminJobsTable />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
