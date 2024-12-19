@@ -67,7 +67,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
   return (
     <div >
       <Dialog open={open} className="mx-2">
-        <DialogContent className="sm:max-w-[425px] bg-purple-900 text-white" onInteractOutside={()=>setOpen(false)}>
+        <DialogContent className="sm:max-w-[425px] bg-gradient-to-b from-[#000707] via-[#4d3b25] to-[#000707] text-white" onInteractOutside={()=>setOpen(false)}>
           <DialogHeader>
             <DialogTitle>Update Profile</DialogTitle>
           </DialogHeader>
@@ -77,37 +77,37 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                 <Label htmlFor="name" className="text-right">
                   Name
                 </Label>
-                <Input id="name" type="text" value={input.fullName} onChange={changeEventHandler} className="col-span-3 bg-purple-200 font-bold text-black" name="fullName" />
+                <Input id="name" type="text" value={input.fullName} onChange={changeEventHandler} className="col-span-3 font-bold text-black" name="fullName" />
               </div>
               <div className="grid grid-cols-4 items-center gap-4 my-2">
                 <Label htmlFor="email" className="text-right">
                   Email
                 </Label>
-                <Input id="email" type="email" value={input.email}  onChange={changeEventHandler} className="col-span-3  bg-purple-200 font-bold text-black" name="email" />
+                <Input id="email" type="email" value={input.email}  onChange={changeEventHandler} className="col-span-3 font-bold text-black" name="email" />
               </div>
               <div className="grid grid-cols-4 items-center gap-4 my-2">
                 <Label htmlFor="email" className="text-right">
                   Phone
                 </Label>
-                <Input id="phoneNumber"  value={input.phoneNumber}  onChange={changeEventHandler} className="col-span-3  bg-purple-200 font-bold text-black" name="phoneNumber" />
+                <Input id="phoneNumber"  value={input.phoneNumber}  onChange={changeEventHandler} className="col-span-3   font-bold text-black" name="phoneNumber" />
               </div>
               <div className="grid grid-cols-4 items-center gap-4 my-2">
                 <Label htmlFor="bio" className="text-right">
                   Bio
                 </Label>
-                <Input id="bio" value={input.bio}  onChange={changeEventHandler} className="col-span-3  bg-purple-200 font-bold text-black" name="bio" />
+                <Input id="bio" value={input.bio}  onChange={changeEventHandler} className="col-span-3 font-bold text-black" name="bio" />
               </div>
               <div className="grid grid-cols-4 items-center gap-4 my-2">
                 <Label htmlFor="Skills"  className="text-right">
                   Skills
                 </Label>
-                <Input id="skills" className="col-span-3  bg-purple-200 font-bold text-black" value={input.skills}  onChange={changeEventHandler} name="skills" />
+                <Input id="skills" className="col-span-3 font-bold text-black" value={input.skills}  onChange={changeEventHandler} name="skills" />
               </div>
               <div className="grid grid-cols-4 items-center gap-4 my-2">
                 <Label htmlFor="name" className="text-right">
                   Resume
                 </Label>
-                <Input id="file" onChange={fileChangeHandler} className="col-span-3  bg-purple-200 font-bold text-black" name="file" type="file" accept="application/pdf" />
+                <Input id="file" onChange={fileChangeHandler} className="col-span-3 font-bold text-black" name="file" type="file" accept="application/pdf" />
               </div>
             </div>
             <DialogFooter>

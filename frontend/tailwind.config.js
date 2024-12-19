@@ -12,7 +12,11 @@ export default {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
-  		colors: {}
+  		colors: {},
+      backgroundImage: {
+        'bgImg': "url('/src/assets/bgImg.jpg')",
+        'footer-texture': "url('/img/footer-texture.png')",
+      }
   	}
   },
   plugins: [import("tailwindcss-animate")],

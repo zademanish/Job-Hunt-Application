@@ -11,12 +11,9 @@ const filterData = [
   },
   {
     filterType: "Industry",
-    array: ["Front-end", "Back-end", "Full-Stack", "Mern-Stack"],
-  },
-  {
-    filterType: "Salary",
-    array: ["0-20K", "21k-40k", "40K-60k", "61k-1Lack"],
-  },
+    array: ["Front-end", "Back-end", "Full-Stack", "Mern-Stack","Data science","React-Developer","Data Analyst"],
+  }
+  
 ];
 const FilterCard = () => {
   const [selectedValue, setSelectedValue] = useState("");
@@ -30,19 +27,19 @@ const FilterCard = () => {
     dispatch(setSearchedQuery(selectedValue));
   }, [selectedValue]);
   return (
-    <div className="w-full bg-purple-200 p-3 rounded-md">
+    <div className="w-fit  bg-white p-6 rounded-md">
       <h1 className="font-bold text-lg">Filter Jobs</h1>
       <hr className="mt-3 border-t my-4 border-black" />
       <RadioGroup value={selectedValue} onValueChange={changeHandler}>
         {filterData.map((data, index) => (
-          <div key={index} className="flex justify-between items-center gap-2 md:inline">
-            <h1 className="font-bold text-lg text-left">{data.filterType}</h1>
+          <div key={index} className="flex justify-between gap-2 items-center  md:inline">
+            <h1 className="font-bold text-lg">{data.filterType}</h1>
             <div className="md:hidden">
-              <select value={selectedValue} className="bg-white border-none rounded-sm px-2 py-1 " onChange={(e)=>setSelectedValue(e.target.value)} id={index} name={data.filterType} >
+              <select value={selectedValue} className="bg-white border-none rounded-sm px-2 py-1" onChange={(e)=>setSelectedValue(e.target.value)} id={index} name={data.filterType} >
              {data.array.map((elem,num) =>{
             
-              return (
-                <option key={num} className="bg-white border-none " value={data[index]} >{elem}</option>
+              return ( 
+                  <option key={num} className="bg-white border-none" value={data[index]} >{elem}</option>
               )
              }   
               )}
@@ -51,13 +48,18 @@ const FilterCard = () => {
             {data.array.map((item, idx) => {
               const itemId = `id${index}-${idx}`;
               return (
-                <div key={idx}>
+                <div key={idx} className="flex items-center justify-center">
                   <div
                  
-                    className="hidden md:flex items-center space-x-2 my-2"
+                    className="hidden w-full  md:flex  gap-2 items-center  my-2"
                   >
+                    <div className="max-w-8 ">
                     <RadioGroupItem value={item} id={itemId} />
+                    </div>
+                    <div className="max-w-40">
+
                     <Label htmlFor={itemId}>{item}</Label>
+                    </div>
                   </div>
                </div>
               

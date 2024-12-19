@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setAllApplicants } from '@/redux/applicationSlice'
 import store from '@/redux/store'
 import { APPLICATION_API_END_POINT } from '@/utils/Constant'
+import Footer from '../Footer'
 
 const Applicants = () => {
     const params = useParams();
@@ -26,11 +27,14 @@ const Applicants = () => {
         fetchAllApplicants();
     },[])
   return (
-    <div>
+      <div>
+            <div className='bg-gradient-to-b from-[#000707] via-[#4d3b25] to-[#000707] text-white'>
         <Navbar/>
-        <div className='max-w-7xl mx-auto'>
+        <div className='max-w-7xl mx-auto min-h-screen'>
             <h1 className='font-bold text-xl my-5'>Applicants({applicants?.application?.length})</h1>
             <ApplicantsTable/>
+        </div>
+          
         </div>
     </div>
   )

@@ -75,15 +75,15 @@ const CompanySetup = () => {
     })
   },[singleCompany]);
   return (
-    <div className="bg-purple-900 min-h-screen">
+    <div className="bg-gradient-to-b from-[#000707] via-[#4d3b25] to-[#000707] text-white min-h-screen">
       <Navbar />
-      <div className="max-w-xl mx-4 md:mx-auto my-10">
+      <div className="max-w-xl mx-4 md:mx-auto my-10 ">
         <form onSubmit={submitHandler}>
           <div className="flex items-center gap-5 py-6">
             <Button
               onClick ={()=>navigate('/admin/companies')}
               variant="outline"
-              className="flex items-center bg-purple-300  text-gray-500 font-semibold "
+              className="flex items-center text-gray-500 font-semibold "
             >
               <ArrowLeft />
               <span>Back</span>
@@ -97,6 +97,7 @@ const CompanySetup = () => {
                 type="text"
                 name="name"
                 value={input.name}
+                className="text-black"
                 onChange={changeHandler}
               />
             </div>
@@ -105,6 +106,7 @@ const CompanySetup = () => {
               <Input
                 type="text"
                 name="description"
+                className="text-black"
                 value={input.description}
                 onChange={changeHandler}
               />
@@ -114,6 +116,7 @@ const CompanySetup = () => {
               <Input
                 type="text"
                 name="website"
+                className="text-black"
                 value={input.website}
                 onChange={changeHandler}
               />
@@ -123,6 +126,7 @@ const CompanySetup = () => {
               <Input
                 type="text"
                 name="location"
+                className="text-black"
                 value={input.location}
                 onChange={changeHandler}
               />

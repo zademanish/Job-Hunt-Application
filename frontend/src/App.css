@@ -1,0 +1,15 @@
+.elem_wrapper{
+    position: relative;
+}
+
+.elem_wrapper::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('./assets/bgImg2.jpg');
+    background-repeat: no-repeat;
+    background-position:center;
+    z-index: -1;
+    filter: blur(8px);
+    backdrop-filter: brightness(0);
+}

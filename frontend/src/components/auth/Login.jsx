@@ -11,6 +11,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading, setUser } from "@/redux/authSlice";
 import { Loader2 } from "lucide-react";
+import Footer from "../Footer";
 
 const Login = () => {
   const {loading} = useSelector(store=>store.auth)
@@ -49,21 +50,21 @@ const submitHandler=async(e)=>{
     }
 };
   return (
-    <div>
+    <div className="bg-gradient-to-b from-[#000707] via-[#4d3b25] to-[#000707] min-h-screen text-white">
       <Navbar />
-      <div className="flex items-center justify-center mx-auto max-w-7xl">
+      <div className="flex items-center justify-center p-2 my-20 mx-auto max-w-7xl">
         <form
-          className="w-1/2 border border-gray-200 rounded-md p-4 my-10 "
+          className="w-full mx-4 md:w-1/2 border border-gray-200 rounded-md p-4 my-10 "
           onSubmit={submitHandler}
         >
-          <h1 className="font-fond text-xl mb-5">Login</h1>
+          <h1 className="font-bold text-center text-xl mb-5">Login</h1>
           <div className="my-2">
             <Label htmlFor="email">Email</Label>
-            <Input type="email" name="email" value={input.email} onChange={changeEventHandler} placeholder="email" />
+            <Input type="email" name="email" value={input.email} className="text-black" onChange={changeEventHandler} placeholder="email" />
           </div>   
           <div className="my-2">
             <Label htmlFor="email">Password</Label>
-            <Input type="password"name="password" value={input.password} onChange={changeEventHandler} placeholder="password" />
+            <Input type="password"name="password" value={input.password} className="text-black" onChange={changeEventHandler} placeholder="password" />
           </div>
           <div className="flex items-center justify-between">
             <RadioGroup className="flex items-center gap-4 my-3">
@@ -80,9 +81,10 @@ const submitHandler=async(e)=>{
           {
             loading ? <Button className="w-full my-4"><Loader2 className="mr-2 h-4 w-4 animate-spin"/>please wait</Button>:<Button type="submit" className="w-full my-4">Login</Button>
           }
-          <span className="text-sm">Don't have an account? <Link to="/signup" className="text-blue-800 font-semibold ">Signup</Link></span>
+          <span className="text-md ">Don't have an account.? <Link to="/signup" className="text-blue-500 font-medium border-b border-blue-500 ml-2">Signup</Link></span>
         </form>
       </div>
+      <Footer/>
     </div>
   );
 };

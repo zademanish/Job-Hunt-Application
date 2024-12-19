@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import store from "@/redux/store";
 import { setLoading } from "@/redux/authSlice";
 import { Loader2 } from "lucide-react";
+import Footer from "../Footer";
 
 const SignUp = () => {
   const {loading} = useSelector(store=>store.auth)
@@ -63,14 +64,14 @@ const SignUp = () => {
     }
   };
   return (
-    <div>
+    <div className="bg-gradient-to-b from-[#000707] via-[#4d3b25] to-[#000707] min-h-screen text-white">
       <Navbar />
       <div className="flex items-center justify-center mx-auto max-w-7xl">
         <form
-          className="w-1/2 border border-gray-200 rounded-md p-4 my-10 "
+          className="w-full mx-4 md:w-1/2 border border-gray-200 rounded-md p-4 my-10 "
           onSubmit={submitHandler}
         >
-          <h1 className="font-fond text-xl mb-5">SignUp</h1>
+          <h1 className="text-center font-bold text-xl mb-5">SignUp</h1>
           <div className="my-2">
             <Label htmlFor="Full name">Full name</Label>
             <Input
@@ -79,6 +80,7 @@ const SignUp = () => {
               value={input.fullName}
               onChange={changeEventHandler}
               placeholder="Fullname"
+              className="text-black"
             />
           </div>
           <div className="my-2">
@@ -89,6 +91,7 @@ const SignUp = () => {
               value={input.email}
               onChange={changeEventHandler}
               placeholder="email"
+              className="text-black"
             />
           </div>
           <div className="my-2">
@@ -99,6 +102,7 @@ const SignUp = () => {
               value={input.phoneNumber}
               onChange={changeEventHandler}
               placeholder="mobile no"
+              className="text-black"
             />
           </div>
           <div className="my-2">
@@ -109,9 +113,10 @@ const SignUp = () => {
               value={input.password}
               onChange={changeEventHandler}
               placeholder="password"
+              className="text-black"
             />
           </div>
-          <div className="flex items-center justify-between">
+          <div className="md:flex items-center justify-between">
             <RadioGroup className="flex items-center gap-4 my-3">
               <div className="flex items-center space-x-2">
                 <Input
@@ -149,14 +154,15 @@ const SignUp = () => {
           {
             loading ? <Button className="w-full my-4"><Loader2 className="mr-2 h-4 w-4 animate-spin"/>please wait</Button>:<Button type="submit" className="w-full my-4">Signup</Button>
           }
-          <span className="text-sm">
+          <span className="text-md ">
             Already have an account?{" "}
-            <Link to="/login" className="text-blue-800 font-semibold ">
+            <Link to="/login" className="text-blue-500 ml-4 border-b border-blue-500 font-semibold ">
               Login
             </Link>
           </span>
         </form>
       </div>
+      <Footer/> 
     </div>
   );
 };

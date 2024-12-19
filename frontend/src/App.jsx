@@ -14,6 +14,7 @@ import PostJob from "./components/admin/PostJob"
 import Applicants from "./components/admin/Applicants"
 import ProtectedRoute from "./components/admin/ProtectedRoute"
 
+
 function App() {
 const appRouter = createBrowserRouter([
   {

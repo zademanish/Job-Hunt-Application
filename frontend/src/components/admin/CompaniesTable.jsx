@@ -36,10 +36,10 @@ const CompaniesTable = () => {
       <TableCaption>A List of your recent register companies</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead  className="font-bold text-white">Logo</TableHead>
-          <TableHead  className="font-bold text-white">Name</TableHead>
-          <TableHead  className="font-bold text-white">Date</TableHead>
-          <TableHead className="text-right text-white font-bold">Action</TableHead>
+          <TableHead  className="font-bold text-white text-lg">Logo</TableHead>
+          <TableHead  className="font-bold text-white text-lg">Name</TableHead>
+          <TableHead  className="font-bold text-white text-lg">Date</TableHead>
+          <TableHead className="text-right text-white font-bold text-lg">Action</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -50,9 +50,9 @@ const CompaniesTable = () => {
                 <AvatarImage src={company.logo} />
               </Avatar>
             </TableCell>
-            <TableCell>{company?.name}</TableCell>
-            <TableCell>{company?.createdAt.split("T")[0]}</TableCell>
-            <TableCell className="text-right cursor-pointer">
+            <TableCell className="text-lg">{company?.name}</TableCell>
+            <TableCell className="text-lg">{company?.createdAt.split("T")[0]}</TableCell>
+            <TableCell className="text-right cursor-pointer ">
               <Popover>
                 <PopoverTrigger>
                   <MoreHorizontal />

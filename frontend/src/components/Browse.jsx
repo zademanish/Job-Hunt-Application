@@ -18,7 +18,7 @@ const Browse = () => {
         } 
     },[])
   return (
-    <div className='bg-purple-900'>
+    <div className='bg-gradient-to-b from-[#000707] via-[#4d3b25] to-[#000707]'>
         <Navbar/>
         <div className='max-w-7xl mx-4 md:mx-auto my-10'>
             <h1 className='font-fold text-xl my-10 text-white'>Search Result ({allJobs.length})</h1>

@@ -63,9 +63,9 @@ const JobDescription = () => {
     fetchSingleJob();
   }, [jobId, dispatch, user?._id]);
   return (
-    <div className="bg-purple-900 h-screen">
+    <div className="bg-gradient-to-b from-[#000707] via-[#4d3b25] to-[#000707] h-screen">
       <Navbar />
-      <div className="max-w-7xl mx-4 md:mx-auto my-10 bg-purple-200 rounded-md border p-4">
+      <div className="max-w-7xl mx-4 md:mx-auto my-10 bg-white rounded-md border p-4">
         <div className="flex justify-between items-center">
           <div>
             <h1 className="font-bold text-xl">{singleJob?.title}</h1>
@@ -86,8 +86,8 @@ const JobDescription = () => {
             disabled={isApplied}
             className={`hidden md:block rouded-lg ${
               isApplied
-                ? "bg-gray-600 cursor-not-allowed"
-                : "bg-[#920aa7] hover:bg-[#920aa7bc]"
+                ? "bg-gray-900 cursor-not-allowed"
+                : "bg-red-700 hover:bg-red-600"
             }`}
           >
             {isApplied ? "Already applied" : "Apply now"}
@@ -144,8 +144,8 @@ const JobDescription = () => {
             disabled={isApplied}
             className={`my-4 md:hidden rouded-lg ${
               isApplied
-                ? "bg-gray-600 cursor-not-allowed"
-                : "bg-[#920aa7] hover:bg-[#920aa7bc]"
+                ? "bg-gray-900 cursor-not-allowed"
+                : "bg-red-700 hover:bg-red-600"
             }`}
           >
             {isApplied ? "Already applied" : "Apply now"}

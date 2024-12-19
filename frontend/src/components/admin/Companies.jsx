@@ -17,7 +17,7 @@ const Companies = () => {
         dispatch(setSearchCompanyByText(input))
     },[input])
     return (
-        <div className='bg-purple-900 min-h-screen'>
+        <div className='bg-gradient-to-b from-[#000707] via-[#4d3b25] to-[#000707] min-h-screen'>
             <Navbar />
             <div className='max-w-6xl text-white md:mx-auto my-10 mx-4'>
                 <div className='flex justify-between items-center'>

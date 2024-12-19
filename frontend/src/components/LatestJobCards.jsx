@@ -13,7 +13,7 @@ const LatestJobCards = ({job}) => {
   }
 
   return (
-    <div  onClick={()=>navigate(`/description/${job._id}`)} className="p-4 rounded-md shadow-xl  cursor-pointer bg-purple-200  border border-gray-100">
+    <div  onClick={()=>navigate(`/description/${job._id}`)} className="p-4 rounded-md shadow-xl  cursor-pointer bg-white  border border-gray-100">
         <p className="text-sm mb-4 text-black">{daysAgoFunction(job?.createdAt) === 0 ? "Today" :` ${daysAgoFunction(job?.createdAt)} days Ago`}</p>
       <div className="flex items-center gap-3">
         <div className="w-16 h-16 object-contain">

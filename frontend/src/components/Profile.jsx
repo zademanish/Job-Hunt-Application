@@ -25,9 +25,9 @@ const Profile = () => {
   const [open, setOpen] = useState(false);
   const isResume = true;
   return (
-    <div className="bg-purple-900 h-fit">
+    <div className="bg-gradient-to-b from-[#000707] via-[#4d3b25] to-[#000707] h-fit">
       <Navbar />
-      <div className="max-w-4xl md:mx-auto mx-4  bg-purple-200  rounded-2xl my-8 p-8">
+      <div className="max-w-4xl md:mx-auto mx-4 bg-white shadow-2xl rounded-2xl my-8 p-8">
         <div className="flex justify-between">
           <div className="flex items-center gap-4">
             <Avatar className="h-24 w-24">
@@ -45,8 +45,7 @@ const Profile = () => {
           </div>
           <Button
             onClick={() => setOpen(true)}
-            className="text-right bg-black hover:bg-gray-700 text-white"
-           
+            className="text-right  hover:bg-gray-700 text-white"
           >
             <Pen />
           </Button>
@@ -86,7 +85,7 @@ const Profile = () => {
           )}
         </div>
       </div>
-      <div className="max-w-4xl mx-4 md:mx-auto bg-purple-200 my-8  rounded-sm">
+      <div className="max-w-4xl mx-4 md:mx-auto bg-white my-12 shadow-2xl  rounded-sm">
         <h1 className="text-center font-bold text-lg pt-6  ">Applied Job</h1>
         <AppliedJobTable />
       </div>

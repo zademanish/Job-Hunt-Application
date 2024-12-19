@@ -33,7 +33,7 @@ const Navbar = () => {
     }
   };
   return (
-    <div className=" text-white px-4">
+    <div className="bg-black text-white px-4">
       <div className="flex justify-between items-center mx-auto md:max-w-7xl h-16 ">
         <div>
           <Link to="/" className="text-2xl font-bold flex items-center">
@@ -47,22 +47,22 @@ const Navbar = () => {
           <ul className="hidden md:flex items-center font-medium gap-5">
             {user && user.role == "requiter" ? (
               <>
-                <li>
+                <li className="font-bold text-xl">
                   <Link to="/admin/companies">Companies</Link>
                 </li>
-                <li>
+                <li className="font-bold text-xl">
                   <Link to="/admin/jobs">Jobs</Link>
                 </li>
               </>
             ) : (
               <>
-                <li>
+                <li className="font-bold text-xl">
                   <Link to="/">Home</Link>
                 </li>
-                <li>
+                <li className="font-bold text-xl">
                   <Link to="/jobs">Jobs</Link>
                 </li>
-                <li>
+                <li className="font-bold text-xl">
                   <Link to="/browse">Browse</Link>
                 </li>
               </>
@@ -89,7 +89,7 @@ const Navbar = () => {
                       <Link to="/login">
                         <Button
                           variant="outline"
-                          className="text-black px-6 text-2xl bg-white hover:bg-slate-300"
+                          className="text-black px-6 font-semibold text-lg bg-white hover:bg-slate-300"
                         >
                           Login
                         </Button>
@@ -97,7 +97,7 @@ const Navbar = () => {
                     </div>
                     <div className="my-5">
                       <Link to="/signup">
-                        <Button className="bg-red-500 hover:bg-red-800 text-2xl px-6">
+                        <Button className="bg-red-500 hover:bg-red-800 text-lg  font-semibold px-6">
                           Signup
                         </Button>
                       </Link>
@@ -109,14 +109,14 @@ const Navbar = () => {
                 <Link to="/login">
                   <Button
                     variant="outline"
-                    className="text-black px-6  bg-white hover:bg-slate-300"
+                    className="text-black px-6  bg-white font-semibold hover:bg-slate-300"
                   >
                     Login
                   </Button>
                 </Link>
 
                 <Link to="/signup">
-                  <Button className="bg-red-500 hover:bg-red-800  px-6">
+                  <Button className="bg-red-500 hover:bg-red-800 font-semibold px-6">
                     Signup
                   </Button>
                 </Link>
@@ -133,7 +133,7 @@ const Navbar = () => {
                     />
                   </Avatar>
                 </PopoverTrigger>
-                <PopoverContent className="w-80 bg-purple-200">
+                <PopoverContent className="w-80 bg-white">
                   <div className="flex gap-4">
                     <Avatar className="cursor-pointer">
                       <AvatarImage
@@ -172,7 +172,7 @@ const Navbar = () => {
                 <PopoverTrigger asChild>
                   <Menu className=" md:hidden h-8 w-8" />
                 </PopoverTrigger>
-                <PopoverContent className="w-52 text-center bg-purple-200 pb-6 h-fit">
+                <PopoverContent className="w-52 text-center bg-white pb-6 h-fit">
                   <ul className="md:flex items-center font-medium gap-5">
                     {user && user.role == "requiter" ? (
                       <>
@@ -191,37 +191,48 @@ const Navbar = () => {
                           </Avatar>
                         </div>
                         <div className="flex justify-center text-2xl items-center ">
-                            <LogOut />
-                            <Button variant="link" className="text-2xl mt-2" onClick={logoutHanderler}>
-                              Logout
-                            </Button>
-                          </div>
+                          <LogOut />
+                          <Button
+                            variant="link"
+                            className="text-2xl mt-2"
+                            onClick={logoutHanderler}
+                          >
+                            Logout
+                          </Button>
+                        </div>
                       </>
                     ) : (
                       <>
-                        <li className="my-3 text-2xl">
+                        <li className="my-3 text-xl font-bold">
                           <Link to="/">Home</Link>
                         </li>
-                        <li className="my-3 text-2xl">
+                        <li className="my-3 text-xl font-bold">
                           <Link to="/jobs">Jobs</Link>
                         </li>
-                        <li className="my-3 text-2xl">
+                        <li className="my-3 text-xl font-bold">
                           <Link to="/browse">Browse</Link>
                         </li>
-                        <Link to='/profile' className="flex justify-center items-center my-3">
-                          <Avatar className="cursor-pointer w-20 h-20">
+                        <Link
+                          to="/profile"
+                          className="flex justify-center items-center my-3"
+                        >
+                          <Avatar className="cursor-pointer w-16 h-16">
                             <AvatarImage
                               src={user?.profile?.profilePhoto}
                               alt="@shadcn"
                             />
                           </Avatar>
                         </Link>
-                        <div className="flex justify-center text-2xl items-center ">
-                            <LogOut />
-                            <Button variant="link" className="text-2xl mt-2" onClick={logoutHanderler}>
-                              Logout
-                            </Button>
-                          </div>
+                        <div className="flex justify-center  items-center ">
+                          <LogOut />
+                          <Button
+                            variant="link"
+                            className="text-xl font-bold "
+                            onClick={logoutHanderler}
+                          >
+                            Logout
+                          </Button>
+                        </div>
                       </>
                     )}
                   </ul>
