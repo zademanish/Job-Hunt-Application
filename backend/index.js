@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOption= {
-    origin:'https://job-hunt-application.onrender.com',
+    origin:'http://localhost:5173',
     credentials:true
 }
 app.use(cors(corsOption));
@@ -33,6 +33,7 @@ app.use(express.static(path.join(_dirname,"/frontend/dist")))
 app.get('*', (_,res)=>{
     res.sendFile(path.resolve(_dirname,"frontend","dist","index.html"))
 })
+
 const PORT=process.env.PORT || 3000
 app.listen(PORT, ()=>{
     connectDB();

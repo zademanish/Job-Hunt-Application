@@ -50,17 +50,17 @@ const submitHandler=async(e)=>{
     }
 };
   return (
-    <div className="bg-gradient-to-b from-[#000707] via-[#4d3b25] to-[#000707] min-h-screen text-white">
+    <div className="bg-gradient-to-b from-[#000707] via-[#4d3b25] to-[#000707] min-h-screen ">
       <Navbar />
       <div className="flex items-center justify-center p-2 my-20 mx-auto max-w-7xl">
         <form
-          className="w-full mx-4 md:w-1/2 border border-gray-200 rounded-md p-4 my-10 "
+          className="w-full mx-4 md:w-1/2  bg-white text-black border border-gray-200 rounded-md p-4 my-10 "
           onSubmit={submitHandler}
         >
           <h1 className="font-bold text-center text-xl mb-5">Login</h1>
           <div className="my-2">
             <Label htmlFor="email">Email</Label>
-            <Input type="email" name="email" value={input.email} className="text-black" onChange={changeEventHandler} placeholder="email" />
+            <Input type="email"  name="email" value={input.email} className="text-black " onChange={changeEventHandler} placeholder="email" />
           </div>   
           <div className="my-2">
             <Label htmlFor="email">Password</Label>

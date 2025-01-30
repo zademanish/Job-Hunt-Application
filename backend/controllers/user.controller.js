@@ -3,7 +3,10 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import cookie from "cookie-parser";
 import getDataUri from "../utils/DataUri.js";
-import cloudinary from "../utils/Cloudinary.js";
+import cloudinary from "../utils/Cloudinary.js";const corsOption= {
+  origin:'https://job-hunt-application.onrender.com',
+  credentials:true
+}
 
 export const Register = async (req, res) => {
   try {
